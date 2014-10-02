@@ -28,9 +28,9 @@ def fizzbuzz_args(arg_input):
 	print "Program complete, thanks for playing."
 
 def main():
+	arg_input = 0
 	if len(sys.argv) > 2:
 		sys.exit("Use: python ~/path/fizzbuzz_args.py <maximum integer>")
-	arg_input = 0
 	elif len(sys.argv) > 1:
 		if sys.argv[1].isdigit():
 			arg_input = int(sys.argv[1])
