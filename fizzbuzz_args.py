@@ -2,6 +2,7 @@
 #Drew Michael, 2014
 
 import sys
+import pdb
 
 def fizzbuzz_args(arg_input):
 	print "Fizzbuzz!  Let's play!"
@@ -15,8 +16,10 @@ def fizzbuzz_args(arg_input):
 				break
 			except ValueError:
 				print "Please enter an integer value."
-	for i in range(0, int(num)):
-		if i % 3 == 0:
+	for i in range(1, int(num)):
+		if i % 3 == 0 and i % 5 == 0:
+			print "Fizz Buzz"
+		elif i % 3 == 0:
 			print "Fizz"
 		elif i % 5 == 0:
 			print "Buzz"
@@ -29,12 +32,15 @@ def main():
 		sys.exit("Use: python ~/path/fizzbuzz_args.py <maximum integer>")
 	arg_input = 0
 	if len(sys.argv) > 1:
-		while type(sys.argv[1]) != type(int(1)):
-			try:
-				arg_input = int(raw_input("Please enter an interger value to count up to: ")) + 1
-				break
-			except ValueError:
-				print "Non-integer value entered...sorry play fair."
+		if sys.argv[1].isdigit():
+			arg_input = int(sys.argv[1]) + 1
+		else:
+			while arg_input < 1:
+				try:
+					arg_input = int(raw_input("Please enter an interger value to count up to: ")) + 1
+					break
+				except ValueError:
+					print "Non-integer value entered...sorry play fair."
 	fizzbuzz_args(arg_input)
 
 main()
