@@ -7,9 +7,19 @@ import pdb
 
 
 def main():
+    #Set seed:
+    random.seed(20)
+    #Create wheels:
+    wheel_options = [bikes.Wheel("Carbon",5,45), bikes.Wheel("Steel",10,5), bikes.Wheel("Aluminium", 7.2, 25)]
+    #Create frames:
+    frame_options = [bikes.Frame("Carbon",10,300), bikes.Frame("Steel",20,40), bikes.Frame("Aluminium", 16.4, 150)]
     #Create bikes
-    bike_options = [bikes.Bike("SlowRider", 20, 110), bikes.Bike("MegaFaster",11,380), bikes.Bike("Mr. Blingy", 12,730),
-                       bikes.Bike("CokeZero", 13,220), bikes.Bike("MontyZooma", 19,330), bikes.Bike("Trekker", 40,120)]   
+    bike_options = [bikes.Bike("SlowRider", random.choice(wheel_options), random.choice(frame_options)),
+                    bikes.Bike("MegaFaster", random.choice(wheel_options), random.choice(frame_options)),
+                    bikes.Bike("Mr. Blingy", random.choice(wheel_options), random.choice(frame_options)),
+                    bikes.Bike("CokeZero", random.choice(wheel_options), random.choice(frame_options)), 
+                    bikes.Bike("MontyZooma", random.choice(wheel_options), random.choice(frame_options)), 
+                    bikes.Bike("Trekker", random.choice(wheel_options), random.choice(frame_options))]   
     bike_list = [bike.name for bike in bike_options]
     #Create bike shop, add inventory:
     mikes_shop = bikes.Bikeshop("Mikes Shop", 1.2)

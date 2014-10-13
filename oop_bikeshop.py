@@ -1,18 +1,54 @@
 import random
+import pdb
+
+class Wheel(object):
+    wheeltype = "Default Type"
+    weight = 10
+    cost = 45
+
+    def __init__(self,wheeltype,weight, cost):
+        self.wheeltype = wheeltype
+        self.weight = weight
+        self.cost = cost
+
+class Frame(object):
+    name = "Default Name"
+    weight = 20
+    cost = 40
+
+    def __init__(self,name,weight,cost):
+        self.name = name
+        self.weight = weight
+        self.cost = cost
 
 class Bike(object):
     "Bike base class"
     name = "Generic Bike"
-    weight = 20
-    base_cost = 100
-
-    def __init__(self,name, weight, base_cost):
+    weight = 1
+    base_cost = 1
+    
+    def __init__(self,name, wheel_object, frame_object):
         self.name = name
-        self.weight = weight
-        self.base_cost = base_cost
-        
+        self.wheel_list = []
+        self.frame = []
+        for i in range(0,2):
+            self.wheel_list.append(wheel_object)
+        self.frame.append(frame_object)
+        self.weight = self.calculate_weight()
+        self.base_cost = self.calculate_cost()
+
+    def calculate_weight(self):
+        self.wheel_weight = sum([wheel_object.weight for wheel_object in self.wheel_list])
+        self.frame_weight = self.frame[0].weight
+        return self.wheel_weight + self.frame_weight
+
+    def calculate_cost(self):
+        self.wheel_cost = sum([wheel_object.cost for wheel_object in self.wheel_list])
+        self.frame_cost = self.frame[0].cost
+        return self.wheel_cost + self.frame_cost
+
 class Bikeshop(object):
-    "Bike shope base class"
+    "Ye olde bike shoppe base class"
     shop_name = "Bike Shop"
     markup = 0
     bike_profit = 0
