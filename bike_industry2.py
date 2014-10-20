@@ -26,8 +26,9 @@ def main():
         bike_feature_tuple = bike_dict[bike_name]
         mikes_shop.stock_bike(bike_name, random.randint(1,10), bike_dict, parts_dict)
     print "{0} is now open for the day!".format(mikes_shop.name)
+    print mikes_shop.display_inv()
     #Generate customers:
-    customer_list = [bikes.Customer("Homer",200), bikes.Customer("Smithers", 750), bikes.Customer("Mr. Burns", 10000)]
+    customer_list = [bikes.Customer("Homer",200), bikes.Customer("Smithers", 750), bikes.Customer("Mr. Burns", 100000)]
     #ID and sell bikes:
     for customer in customer_list:
         print "{0} has just come into the shop!".format(customer.name)
@@ -45,6 +46,7 @@ def main():
         for bike in customer.inv_bikes:
                 print bike.name
     print "Closing up shop for the day."
+    mikes_shop.display_inv()
     mikes_shop.report_status()
 
 main()

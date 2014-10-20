@@ -63,7 +63,7 @@ class Bike_shop(object):
             print "{0}: {1}".format(bike_object.name, num_bikes)
 
     def print_stock_in_budget(self, customer, num_desired):
-        print "These are the bikes that {0} can afford:".format(customer.name)
+        print "These are the bikes that {0} can afford and Mike has enough in stock:".format(customer.name)
         for bike in self.inv_objectDict.keys():
             bike_object = self.inv_objectDict[bike]
             if (bike_object.cost * self.margin * num_desired) < customer.funds and self.inv_numDict[bike] >= num_desired:
