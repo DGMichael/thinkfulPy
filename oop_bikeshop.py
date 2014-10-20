@@ -26,6 +26,7 @@ class Bike(object):
     name = "Generic Bike"
     weight = 1
     base_cost = 1
+
     
     def __init__(self,name, wheel_object, frame_object):
         self.name = name
